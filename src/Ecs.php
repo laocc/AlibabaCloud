@@ -1,6 +1,6 @@
 <?php
 
-namespace laocc\AlibabaCloud;
+namespace laocc\aliyun;
 
 
 class Ecs extends Base

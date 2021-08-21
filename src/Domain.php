@@ -1,6 +1,6 @@
 <?php
 
-namespace laocc\AlibabaCloud;
+namespace laocc\aliyun;
 
 use AlibabaCloud\Alidns\Alidns;
 use GuzzleHttp\Exception\ClientException;
@@ -18,6 +18,8 @@ class Domain extends Base
         try {
             $request = Alidns::v20150109()->describeDomains();
             return $request
+                ->withPageSize($this->pageSize)
+                ->withPageNumber($this->pageIndex)
                 ->debug($this->debug)
                 ->connectTimeout($this->timeout)
                 ->timeout($this->timeout)
@@ -43,6 +45,8 @@ class Domain extends Base
         try {
             $request = Alidns::v20150109()->describeDomainRecords();
             return $request->withDomainName($domain)
+                ->withPageSize($this->pageSize)
+                ->withPageNumber($this->pageIndex)
                 ->debug($this->debug)
                 ->connectTimeout($this->timeout)
                 ->timeout($this->timeout)
