@@ -66,14 +66,21 @@ class Domain extends Base
     /**
      * 添加一条解析
      *
-     * @param string $domain
+     * @param array $option
      * @return array|string
      */
-    public function add(string $domain)
+    public function add(array $option)
     {
+        if (!in_array($option['type'], ['A', 'NS', 'MX', 'TXT', 'CNAME', 'SRV', 'AAAA', 'CAA', 'REDIRECT_URL', 'FORWARD_URL'])) {
+            return "不支持的解析类型";
+        }
+
         try {
-            $request = Alidns::v20150109()->describeDomainRecords();
-            return $request->withDomainName($domain)
+            $request = Alidns::v20150109()->addDomainRecord();
+            return $request->withDomainName($option['domain'])
+                ->withRR($option['rr'])
+                ->withType($option['type'])
+                ->withValue($option['value'])
                 ->debug($this->debug)
                 ->connectTimeout($this->timeout)
                 ->timeout($this->timeout)
