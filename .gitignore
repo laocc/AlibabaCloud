@@ -3,4 +3,4 @@
 /vendor
 /cache
 /runtime
-composer.lock
+/composer.lock

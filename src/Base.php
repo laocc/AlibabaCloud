@@ -14,7 +14,7 @@ abstract class Base
     protected $timeout = 3;
     protected $version = 'v20150109';
     protected $pageIndex = 1;
-    protected $pageSize = 10;
+    protected $pageSize = 100;
 
     public function __construct(array $option = [])
     {
@@ -23,8 +23,8 @@ abstract class Base
         if (isset($option['regionID'])) $this->regionID = strval($option['regionID']);
         if (isset($option['debug'])) $this->debug = boolval($option['debug']);
         if (isset($option['timeout'])) $this->timeout = intval($option['timeout']);
-        if (isset($option['index'])) $this->timeout = intval($option['index']);
-        if (isset($option['size'])) $this->timeout = intval($option['size']);
+        if (isset($option['index'])) $this->pageIndex = intval($option['index']);
+        if (isset($option['size'])) $this->pageSize = intval($option['size']);
 
         AlibabaCloud::accessKeyClient($this->accessKeyId, $this->accessKeySecret)
             ->regionId($this->regionID)->asDefaultClient();
