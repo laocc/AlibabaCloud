@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c2ab222efda242b08b3f37e4b0c4867",
+    "content-hash": "fa12e6d22f919057bf20ca2aef151ba6",
     "packages": [
         {
             "name": "adbario/php-dot-notation",
@@ -195,6 +195,58 @@
                 "source": "https://github.com/aliyun/openapi-sdk-php-client"
             },
             "time": "2021-05-13T06:26:38+00:00"
+        },
+        {
+            "name": "alibabacloud/domain",
+            "version": "1.8.958",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alibabacloud-sdk-php/domain.git",
+                "reference": "d34c00dead26a782baef62cb678c1f2b07f6a507"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alibabacloud-sdk-php/domain/zipball/d34c00dead26a782baef62cb678c1f2b07f6a507",
+                "reference": "d34c00dead26a782baef62cb678c1f2b07f6a507",
+                "shasum": ""
+            },
+            "require": {
+                "alibabacloud/client": "^1.5",
+                "php": ">=5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AlibabaCloud\\Domain\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Alibaba Cloud SDK",
+                    "email": "sdk-team@alibabacloud.com",
+                    "homepage": "http://www.alibabacloud.com"
+                }
+            ],
+            "description": "Alibaba Cloud Domain SDK for PHP",
+            "homepage": "https://www.alibabacloud.com/",
+            "keywords": [
+                "alibaba",
+                "alibabacloud",
+                "aliyun",
+                "cloud",
+                "domain",
+                "library",
+                "sdk"
+            ],
+            "support": {
+                "issues": "https://github.com/alibabacloud-sdk-php/domain/issues",
+                "source": "https://github.com/alibabacloud-sdk-php/domain"
+            },
+            "time": "2021-04-29T09:15:58+00:00"
         },
         {
             "name": "clagiordano/weblibs-configmanager",

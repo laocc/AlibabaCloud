@@ -28,7 +28,6 @@ abstract class Base
 
         AlibabaCloud::accessKeyClient($this->accessKeyId, $this->accessKeySecret)
             ->regionId($this->regionID)->asDefaultClient();
-
     }
 
     public function setClient(string $keyID, string $secret)

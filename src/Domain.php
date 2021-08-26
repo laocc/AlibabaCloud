@@ -5,6 +5,8 @@ namespace laocc\aliyun;
 use AlibabaCloud\Alidns\Alidns;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
+use AlibabaCloud\Domain\Domain as DomainAli;
+
 
 class Domain extends Base
 {
@@ -16,10 +18,10 @@ class Domain extends Base
     public function all()
     {
         try {
-            $request = Alidns::v20150109()->describeDomains();
+            $request = DomainAli::v20180129()->queryDomainList();
             return $request
                 ->withPageSize($this->pageSize)
-                ->withPageNumber($this->pageIndex)
+                ->withPageNum($this->pageIndex)
                 ->debug($this->debug)
                 ->connectTimeout($this->timeout)
                 ->timeout($this->timeout)
