@@ -72,6 +72,9 @@ class Analysis extends Base
                 ->withRR($option['rr'])
                 ->withType($option['type'])
                 ->withValue($option['value'])
+                ->withLine($option['line'])
+                ->withTTL($option['ttl'])
+                ->withPriority($option['mx'])
                 ->debug($this->debug)
                 ->connectTimeout($this->timeout)
                 ->timeout($this->timeout)
@@ -96,11 +99,8 @@ class Analysis extends Base
     public function delete(array $option)
     {
         try {
-            $request = Alidns::v20150109()->addDomainRecord();
-            return $request->withDomainName($option['domain'])
-                ->withRR($option['rr'])
-                ->withType($option['type'])
-                ->withValue($option['value'])
+            $request = Alidns::v20150109()->deleteDomainRecord();
+            return $request->withRecordId($option['id'])
                 ->debug($this->debug)
                 ->connectTimeout($this->timeout)
                 ->timeout($this->timeout)
@@ -125,13 +125,15 @@ class Analysis extends Base
     public function update(array $option)
     {
         if (!in_array($option['type'], $this->type)) return "不支持的解析类型({$option['type']})";
-
         try {
-            $request = Alidns::v20150109()->addDomainRecord();
-            return $request->withDomainName($option['domain'])
+            $request = Alidns::v20150109()->updateDomainRecord();
+            return $request->withRecordId($option['id'])
                 ->withRR($option['rr'])
                 ->withType($option['type'])
                 ->withValue($option['value'])
+                ->withLine($option['line'])
+                ->withTTL($option['ttl'])
+                ->withPriority($option['mx'])
                 ->debug($this->debug)
                 ->connectTimeout($this->timeout)
                 ->timeout($this->timeout)
