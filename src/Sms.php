@@ -3,7 +3,7 @@
 namespace laocc\aliyun;
 
 
-class Sms extends Base
+class Sms extends _Base
 {
 
 }

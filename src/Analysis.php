@@ -11,7 +11,7 @@ use GuzzleHttp\Exception\ServerException;
  * Class Analysis
  * @package laocc\aliyun
  */
-class Analysis extends Base
+class Analysis extends _Base
 {
     public $type = ['A', 'NS', 'MX', 'TXT', 'CNAME', 'SRV', 'AAAA', 'CAA', 'REDIRECT_URL', 'FORWARD_URL'];
 

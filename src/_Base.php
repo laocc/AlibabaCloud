@@ -5,7 +5,7 @@ namespace laocc\aliyun;
 
 use AlibabaCloud\Client\AlibabaCloud;
 
-abstract class Base
+abstract class _Base
 {
     protected $accessKeyId;
     protected $accessKeySecret;
@@ -40,6 +40,7 @@ abstract class Base
 
         return $this;
     }
+
 
     public function regionId(string $regionID)
     {

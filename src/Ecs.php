@@ -3,7 +3,7 @@
 namespace laocc\aliyun;
 
 
-class Ecs extends Base
+class Ecs extends _Base
 {
 
 }

@@ -8,7 +8,7 @@ use GuzzleHttp\Exception\ServerException;
 use AlibabaCloud\Domain\Domain as DomainAli;
 
 
-class Domain extends Base
+class Domain extends _Base
 {
     /**
      * 账号中所有注册的域名
