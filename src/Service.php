@@ -26,6 +26,7 @@ class Service extends _Base
                     'memory' => $sv['Memory'],//内存大小，单位为MiB。
                     'ip' => $sv['PublicIpAddress']['IpAddress'][0] ?? '',
                     'eip' => $sv['EipAddress']['IpAddress'] ?? '',
+                    'ewide' => $sv['EipAddress']['Bandwidth'] ?? '',
                     'wide' => $sv['InternetMaxBandwidthOut'],//公网带宽最大值，单位为Mbit/s。
                     'zone' => $sv['ZoneId'],
                     'room' => $sv['RegionId'],
