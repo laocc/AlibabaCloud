@@ -12,7 +12,8 @@
     "php": ">7.1",
     "ext-json": "*",
     "alibabacloud/alidns": "^1.8",
-    "alibabacloud/domain": "^1.8"
+    "alibabacloud/domain": "^1.8",
+    "alibabacloud/ecs": "^1.8"
   },
   "autoload": {
     "psr-4": {

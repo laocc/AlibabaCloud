@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa12e6d22f919057bf20ca2aef151ba6",
+    "content-hash": "597fd5df4fb3c7f1097908589a9dab97",
     "packages": [
         {
             "name": "adbario/php-dot-notation",
@@ -247,6 +247,58 @@
                 "source": "https://github.com/alibabacloud-sdk-php/domain"
             },
             "time": "2021-04-29T09:15:58+00:00"
+        },
+        {
+            "name": "alibabacloud/ecs",
+            "version": "1.8.883",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alibabacloud-sdk-php/ecs.git",
+                "reference": "8a4032112d6c684b135e7c4a40594ee91959fac0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alibabacloud-sdk-php/ecs/zipball/8a4032112d6c684b135e7c4a40594ee91959fac0",
+                "reference": "8a4032112d6c684b135e7c4a40594ee91959fac0",
+                "shasum": ""
+            },
+            "require": {
+                "alibabacloud/client": "^1.5",
+                "php": ">=5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AlibabaCloud\\Ecs\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Alibaba Cloud SDK",
+                    "email": "sdk-team@alibabacloud.com",
+                    "homepage": "http://www.alibabacloud.com"
+                }
+            ],
+            "description": "Alibaba Cloud Ecs SDK for PHP",
+            "homepage": "https://www.alibabacloud.com/",
+            "keywords": [
+                "ECS",
+                "alibaba",
+                "alibabacloud",
+                "aliyun",
+                "cloud",
+                "library",
+                "sdk"
+            ],
+            "support": {
+                "issues": "https://github.com/alibabacloud-sdk-php/ecs/issues",
+                "source": "https://github.com/alibabacloud-sdk-php/ecs"
+            },
+            "time": "2021-02-08T10:27:39+00:00"
         },
         {
             "name": "clagiordano/weblibs-configmanager",
