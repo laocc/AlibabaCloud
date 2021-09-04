@@ -117,7 +117,7 @@ class Analysis extends _Base
 
 
     /**
-     * 添加一条解析
+     * 更新解析
      *
      * @param array $option
      * @return array|string
@@ -148,9 +148,29 @@ class Analysis extends _Base
 
     }
 
+    public function remarked(array $option)
+    {
+        try {
+            $request = Alidns::v20150109()->updateDomainRecordRemark();
+            return $request->withRecordId($option['id'])
+                ->withRemark($option['remark'])
+                ->debug($this->debug)
+                ->connectTimeout($this->timeout)
+                ->timeout($this->timeout)
+                ->request()
+                ->toArray();
+
+        } catch (ClientException $exception) {
+            return $exception->getMessage();
+        } catch (ServerException $exception) {
+            return $exception->getMessage();
+        }
+
+    }
+
 
     /**
-     * 添加一条解析
+     * 查询
      *
      * @param array $option
      * @return array|string
