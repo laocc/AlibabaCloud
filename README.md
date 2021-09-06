@@ -7,3 +7,4 @@ composer require alibabacloud/ecs
 
 
 composer require alibabacloud/ecs 
+composer require alibabacloud/bssopenapi
