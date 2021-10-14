@@ -10,13 +10,16 @@ use AlibabaCloud\Ecs\Ecs;
 
 class Service extends _Base
 {
-    public function load()
+    public function load(string $RegionId = null)
     {
         try {
 
             $service = [];
             $result = Ecs::v20140526()->describeInstances()
-                ->debug($this->debug)->connectTimeout($this->timeout)->timeout($this->timeout)
+                ->withRegionId($RegionId)
+                ->debug($this->debug)
+                ->connectTimeout($this->timeout)
+                ->timeout($this->timeout)
                 ->request()->toArray();
             foreach ($result['Instances']['Instance'] as $sv) {
                 $new = [
