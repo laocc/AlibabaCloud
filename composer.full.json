@@ -1,0 +1,25 @@
+{
+  "name": "laocc/aliyun",
+  "description": "for AlibabaCloud",
+  "homepage": "https://github.com/laocc/aliyun",
+  "authors": [
+    {
+      "name": "fazo",
+      "email": "fazo@qq.com"
+    }
+  ],
+  "require": {
+    "php": ">7.1",
+    "ext-json": "*",
+    "alibabacloud/dyplsapi-20170525": "1.0.3",
+    "alibabacloud/alidns": "^1.8",
+    "alibabacloud/domain": "^1.8",
+    "alibabacloud/ecs": "^1.8",
+    "alibabacloud/bssopenapi": "^1.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "laocc\\aliyun\\": "src/"
+    }
+  }
+}

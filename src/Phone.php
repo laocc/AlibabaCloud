@@ -12,6 +12,45 @@ class Phone extends _Base
 
 
     /**
+     * @param string $poolID
+     * @param string $mobile
+     * @return false|mixed|string|string[]
+     * @throws \AlibabaCloud\Client\Exception\ClientException
+     * @throws \AlibabaCloud\Client\Exception\ServerException
+     *
+     * {
+     * "Message": "OK",
+     * "RequestId": "0C30662C-5DB0-5E2C-8504-0199E27C948F",
+     * "Code": "OK",
+     * "SubsId": "1000054102517090,1000054102595464"
+     * }
+     */
+
+    public function querySubID(string $poolID, string $mobile)
+    {
+        try {
+            $request = Dyplsapi::v20170525()->querySubsId();
+            $rest = $request
+                ->withPoolKey($poolID)
+                ->withPhoneNoX($mobile)
+                ->debug($this->debug) // Enable the debug will output detailed information
+                ->connectTimeout($this->timeout) // Throw an exception when Connection timeout
+                ->timeout($this->timeout) // Throw an exception when timeout
+                ->request()->toArray();
+
+            if ($rest['Code'] !== 'OK') return $rest['Message'];
+
+            return explode(',', $rest['SubsId']);
+
+        } catch (ClientException $exception) {
+            return $exception->getMessage();
+        } catch (ServerException $exception) {
+            return $exception->getMessage();
+        }
+
+    }
+
+    /**
      * 解绑
      *
      * @param string $poolID 号池里
