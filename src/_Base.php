@@ -4,8 +4,9 @@ namespace laocc\aliyun;
 
 
 use AlibabaCloud\Client\AlibabaCloud;
+use esp\core\Library;
 
-abstract class _Base
+abstract class _Base extends Library
 {
     protected $accessKeyId;
     protected $accessKeySecret;
@@ -16,9 +17,9 @@ abstract class _Base
     protected $pageIndex = 1;
     protected $pageSize = 100;
 
-    public function __construct(array $option = [])
+    public function _init(array $option = [])
     {
-        $this->accessKeyId = $option['key'] ?? null;
+        $this->accessKeyId = $option['key'] ?? ($option['keyid'] ?? null);
         $this->accessKeySecret = $option['secret'] ?? null;
         if (isset($option['regionID'])) $this->regionID = strval($option['regionID']);
         if (isset($option['debug'])) $this->debug = boolval($option['debug']);
