@@ -1,9 +1,8 @@
 <?php
+declare(strict_types=1);
 
 namespace laocc\aliyun;
 
-
-use AlibabaCloud\Client\AlibabaCloud;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use AlibabaCloud\Ecs\Ecs;
