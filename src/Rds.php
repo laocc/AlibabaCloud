@@ -35,7 +35,7 @@ class Rds extends _Base
                 $rds = [];
                 $rds['mid'] = $rs['MasterInstanceId'] ?? '';//主实例ID
                 $rds['id'] = $rs['DBInstanceId'];//实例id
-                $rds['stype'] = $rs['DBInstanceStorageType'];//存储类型
+                $rds['stype'] = $rs['DBInstanceStorageType'] ?? '';//存储类型
                 $rds['lock'] = $rs['LockMode'];
                 $rds['create'] = $rs['CreateTime'];
                 $rds['expire'] = $rs['ExpireTime'];
