@@ -2,8 +2,6 @@
 
 namespace laocc\aliyun;
 
-
-use AlibabaCloud\Client\AlibabaCloud;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use AlibabaCloud\Ecs\Ecs;
@@ -12,11 +10,10 @@ class Service extends _Base
 {
     public function load(string $RegionId = null)
     {
+        //->withRegionId($RegionId)
         try {
-
             $service = [];
             $result = Ecs::v20140526()->describeInstances()
-                ->withRegionId($RegionId)
                 ->debug($this->debug)
                 ->connectTimeout($this->timeout)
                 ->timeout($this->timeout)
