@@ -33,7 +33,7 @@ class Rds extends _Base
 
             foreach ($result['Items']['DBInstance'] as $rs) {
                 $rds = [];
-                $rds['mid'] = $rs['MasterInstanceId'];//主实例ID
+                $rds['mid'] = $rs['MasterInstanceId'] ?? '';//主实例ID
                 $rds['id'] = $rs['DBInstanceId'];//实例id
                 $rds['stype'] = $rs['DBInstanceStorageType'];//存储类型
                 $rds['lock'] = $rs['LockMode'];
