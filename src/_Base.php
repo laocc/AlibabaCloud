@@ -1,11 +1,12 @@
 <?php
+declare(strict_types=1);
 
 namespace laocc\aliyun;
 
-
 use AlibabaCloud\Client\AlibabaCloud;
+use esp\core\Library;
 
-abstract class _Base
+abstract class _Base extends Library
 {
     protected $accessKeyId;
     protected $accessKeySecret;
@@ -15,11 +16,13 @@ abstract class _Base
     protected $version = 'v20150109';
     protected $pageIndex = 1;
     protected $pageSize = 100;
+    protected $conf;
 
-    public function __construct(array $option = [])
+    public function _init(array $option = [])
     {
-        $this->accessKeyId = $option['key'] ?? null;
+        $this->accessKeyId = $option['key'] ?? ($option['keyid'] ?? null);
         $this->accessKeySecret = $option['secret'] ?? null;
+        $this->conf = $option;
         if (isset($option['regionID'])) $this->regionID = strval($option['regionID']);
         if (isset($option['debug'])) $this->debug = boolval($option['debug']);
         if (isset($option['timeout'])) $this->timeout = intval($option['timeout']);
