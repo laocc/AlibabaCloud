@@ -45,7 +45,7 @@ class Rds extends _Base
                 $rds['nettype'] = $rs['DBInstanceNetType'];//连接地址
                 $rds['zone'] = $rs['ZoneId'];//可用区ID。 cn-hangzhou-a
                 $rds['region'] = $rs['RegionId'];//地域ID。 cn-hangzhou
-                $rds['desc'] = $rs['DBInstanceDescription'];
+                $rds['desc'] = $rs['DBInstanceDescription'] ?? '';
                 $rds['itype'] = $rs['DBInstanceType'];//实例类型Primary：主实例，ReadOnly：只读实例
                 $rds['class'] = $rs['DBInstanceClass'];//规格
                 $rds['type'] = $rs['Engine'];//类型 mysql
