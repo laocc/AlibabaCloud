@@ -36,7 +36,7 @@ class Rds extends _Base
                 ->version('2014-08-15')
                 ->action('DescribeDBInstances')
                 ->method('POST')
-                ->host('cas.aliyuncs.com')
+                ->host('rds.aliyuncs.com')
                 ->options([
                     'query' => [],
                 ])
