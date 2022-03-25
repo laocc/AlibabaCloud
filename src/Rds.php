@@ -9,7 +9,12 @@ use GuzzleHttp\Exception\ServerException;
 
 class Rds extends _Base
 {
-    public function load(string $RegionId)
+    /**
+     * @return array|string
+     * @throws \AlibabaCloud\Client\Exception\ClientException
+     * @throws \AlibabaCloud\Client\Exception\ServerException
+     */
+    public function load()
     {
         try {
             /**
@@ -22,7 +27,6 @@ class Rds extends _Base
              * ->host('rds.aliyuncs.com')
              * ->options([
              * 'query' => [
-             *
              * ],
              * ])
              * ->request();
@@ -34,10 +38,7 @@ class Rds extends _Base
                 ->method('POST')
                 ->host('cas.aliyuncs.com')
                 ->options([
-                    'query' => [
-                        'ShowSize' => "100",
-                        'CurrentPage' => "1",
-                    ],
+                    'query' => [],
                 ])
                 ->request()
                 ->toArray();
