@@ -49,7 +49,7 @@ class Rds extends _Base
                 $rds['itype'] = $rs['DBInstanceType'];//实例类型Primary：主实例，ReadOnly：只读实例
                 $rds['class'] = $rs['DBInstanceClass'];//规格
                 $rds['type'] = $rs['Engine'];//类型 mysql
-                $rds['category'] = $rs['Category'];//实例系列： Basic：基础版HighAvailability：高可用版Finance：三节点企业版
+                $rds['category'] = $rs['Category'] ?? '';//实例系列： Basic：基础版HighAvailability：高可用版Finance：三节点企业版
                 $rds['status'] = $rs['DBInstanceStatus'];
                 $rdsAll[] = $rds;
             }
