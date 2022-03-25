@@ -36,7 +36,7 @@ class Service extends _Base
                     'expire' => $sv['ExpiredTime'],
                     'status' => $sv['Status'],
                     'name' => $sv['HostName'],
-                    'notes' => $sv['InstanceName'],
+                    'desc' => $sv['InstanceName'],
                 ];
                 if ($sv['InternetMaxBandwidthIn'] !== $new['wide']) {
                     $new['wide'] = "{$sv['InternetMaxBandwidthIn']}/{$new['wide']}";
