@@ -29,6 +29,8 @@ class Rds extends _Base
                 ->request()
                 ->toArray();
             $rdsAll = [];
+            $this->debug($result['Items']['DBInstance']);
+
             foreach ($result['Items']['DBInstance'] as $rs) {
                 $rds = [];
                 $rds['mid'] = $rs['MasterInstanceId'];//主实例ID
