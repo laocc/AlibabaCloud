@@ -20,7 +20,7 @@ abstract class _Base extends Library
 
     public function _init(array $option = [])
     {
-        $this->accessKeyId = $option['key'] ?? ($option['keyid'] ?? null);
+        $this->accessKeyId = $option['id'] ?? ($option['key'] ?? ($option['keyid'] ?? null));
         $this->accessKeySecret = $option['secret'] ?? null;
         $this->conf = $option;
         if (isset($option['regionID'])) $this->regionID = strval($option['regionID']);
