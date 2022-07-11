@@ -23,7 +23,7 @@ abstract class _Base extends Library
         $this->accessKeyId = $option['id'] ?? null;
         if (!$this->accessKeyId and isset($option['key'])) $this->accessKeyId = $option['key'];
         else if (!$this->accessKeyId and isset($option['keyid'])) $this->accessKeyId = $option['keyid'];
-        if (!$this->accessKeySecret) throw new \Error('aliyun sms keyid 不能为空');
+        if (!$this->accessKeyId) throw new \Error('aliyun sms keyid 不能为空');
 
         $this->accessKeySecret = $option['secret'] ?? null;
         if (!$this->accessKeySecret) throw new \Error('aliyun sms secret 不能为空');

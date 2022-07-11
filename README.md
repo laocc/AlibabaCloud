@@ -6,7 +6,7 @@ AlibabaCloud
 composer require alibabacloud/alidns 
 composer require alibabacloud/domain 
 composer require alibabacloud/ecs 
-composerrequire alibabacloud/bssopenapi
+composer require alibabacloud/bssopenapi
 ```
 ## 隐私号码：
 ```
