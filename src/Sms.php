@@ -18,7 +18,7 @@ class Sms extends _Base
      */
     public function send(string $type, string $mobile, array $params = [])
     {
-        $params['code'] = $this->createSignCode($mobile);
+        if (!($params['code'] ?? '')) $params['code'] = $this->createSignCode($mobile);
         if (_DEBUG and !isset($params['test'])) return $params;
         if (is_string($this->conf['sign'])) $this->conf['sign'] = explode(',', $this->conf['sign']);
 
