@@ -7,7 +7,7 @@ use AlibabaCloud\RKvstore\RKvstore;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 
-class Redis
+class Redis extends _Base
 {
     public function load()
     {
