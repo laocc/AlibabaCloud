@@ -16,7 +16,8 @@
     "alibabacloud/domain": ">1.8.0",
     "alibabacloud/ecs": ">1.8.0",
     "alibabacloud/bssopenapi": ">1.8.0",
-    "ext-json": "*"
+    "ext-json": "*",
+    "alibabacloud/r-kvstore-20150101": "^2.20"
   },
   "autoload": {
     "psr-4": {

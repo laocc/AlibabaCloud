@@ -7,6 +7,7 @@ composer require alibabacloud/alidns
 composer require alibabacloud/domain 
 composer require alibabacloud/ecs 
 composer require alibabacloud/bssopenapi
+composer require alibabacloud/r-kvstore-20150101
 ```
 ## 隐私号码：
 ```
