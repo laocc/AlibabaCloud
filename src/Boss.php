@@ -15,7 +15,7 @@ class Boss extends _Base
             $acc = BssOpenApi::v20171214()->queryAccountBalance()
                 ->request()
                 ->toArray();
-            return $acc['Data'];
+            return $acc['Data'] ?? [];
             /**
              * [AvailableCashAmount] => 193.04 可用额度。
              * [MybankCreditAmount] => 0.00网商银行信用额度。

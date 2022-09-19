@@ -17,7 +17,7 @@ class Redis extends _Base
                 ->request()
                 ->toArray();
 
-            return $result;
+            return $result['Instances']['KVStoreInstance'] ?? [];
         } catch (ClientException $exception) {
             return $exception->getMessage();
         } catch (ServerException $exception) {
