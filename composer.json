@@ -10,14 +10,13 @@
   ],
   "require": {
     "php": ">7.1",
+    "ext-json": "*",
     "alibabacloud/sdk": ">1.8.0",
     "alibabacloud/dyplsapi-20170525": ">1.0.0",
     "alibabacloud/alidns": ">1.8.0",
     "alibabacloud/domain": ">1.8.0",
     "alibabacloud/ecs": ">1.8.0",
-    "alibabacloud/bssopenapi": ">1.8.0",
-    "ext-json": "*",
-    "alibabacloud/r-kvstore-20150101": "^2.20"
+    "alibabacloud/bssopenapi": ">1.8.0"
   },
   "autoload": {
     "psr-4": {
