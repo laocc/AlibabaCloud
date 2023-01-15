@@ -9,25 +9,26 @@ use esp\core\Library;
 
 abstract class _Base extends Library
 {
-    protected $accessKeyId;
-    protected $accessKeySecret;
-    protected $regionID = 'cn-shanghai';
-    protected $debug = false;
-    protected $timeout = 3;
-    protected $version = 'v20150109';
-    protected $pageIndex = 1;
-    protected $pageSize = 100;
-    protected $conf;
+    protected string $accessKeyId;
+    protected string $accessKeySecret;
+    protected string $regionID = 'cn-shanghai';
+    protected bool $debug = false;
+    protected int $timeout = 3;
+    protected string $version = 'v20150109';
+    protected int $pageIndex = 1;
+    protected int $pageSize = 100;
+    protected array $conf;
 
     public function _init(array $option = [])
     {
         $this->accessKeyId = $option['id'] ?? null;
+
         if (!$this->accessKeyId and isset($option['key'])) $this->accessKeyId = $option['key'];
         else if (!$this->accessKeyId and isset($option['keyid'])) $this->accessKeyId = $option['keyid'];
-        if (!$this->accessKeyId) throw new Error('aliyun sms keyid 不能为空');
+        if (!$this->accessKeyId) throw new Error('aliyun accessKeyId 不能为空');
 
         $this->accessKeySecret = $option['secret'] ?? null;
-        if (!$this->accessKeySecret) throw new Error('aliyun sms secret 不能为空');
+        if (!$this->accessKeySecret) throw new Error('aliyun accessKeySecret 不能为空');
 
         $this->conf = $option;
         if (isset($option['regionID'])) $this->regionID = strval($option['regionID']);

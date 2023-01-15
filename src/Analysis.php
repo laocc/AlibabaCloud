@@ -14,7 +14,7 @@ use GuzzleHttp\Exception\ServerException;
  */
 class Analysis extends _Base
 {
-    public $type = ['A', 'NS', 'MX', 'TXT', 'CNAME', 'SRV', 'AAAA', 'CAA', 'REDIRECT_URL', 'FORWARD_URL'];
+    public array $type = ['A', 'NS', 'MX', 'TXT', 'CNAME', 'SRV', 'AAAA', 'CAA', 'REDIRECT_URL', 'FORWARD_URL'];
 
     /**
      * OpenAPI 名称    描述    操作
