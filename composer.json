@@ -20,7 +20,8 @@
   },
   "autoload": {
     "psr-4": {
-      "laocc\\aliyun\\": "src/"
+      "laocc\\aliyun\\": "src/",
+      "laocc\\aliyun\\helper\\": "helper/"
     }
   }
 }
