@@ -63,7 +63,7 @@ class AliYunAsset extends Library
 
         end:
         $time = time();
-        $this->debug($res);
+//        $this->debug($res);
 
         foreach ($res as $key => &$items) {
             switch ($key) {
@@ -103,11 +103,11 @@ class AliYunAsset extends Library
     /**
      * @throws Error
      */
-    private function asyncService(array $company)
+    private function asyncService(array $conf)
     {
-        if (isset($company['ecs'])) $company = $company['ecs'];
-        $aliCert = new Service($company);
-        $RegionId = 'cn-shenzhen';
+        if (isset($conf['ecs'])) $conf = $conf['ecs'];
+        $aliCert = new Service($conf);
+        $RegionId = $conf['regionID'] ?? 'cn-shanghai';
         return $aliCert->load($RegionId);
     }
 
@@ -115,11 +115,11 @@ class AliYunAsset extends Library
     /**
      * @throws Error
      */
-    private function asyncRedis(array $company)
+    private function asyncRedis(array $conf)
     {
-        if (isset($company['redis'])) $company = $company['redis'];
-        $company['regionID'] = 'cn-shanghai';
-        $aliRds = new Redis($company);
+        if (isset($conf['redis'])) $conf = $conf['redis'];
+        if (!isset($conf['regionID'])) $conf['regionID'] = 'cn-shanghai';
+        $aliRds = new Redis($conf);
         return $aliRds->load();
     }
 
@@ -128,19 +128,19 @@ class AliYunAsset extends Library
      * @throws ServerException
      * @throws Error
      */
-    private function asyncRds(array $company)
+    private function asyncRds(array $conf)
     {
-        if (isset($company['rds'])) $company = $company['rds'];
-        $company['regionID'] = 'cn-shanghai';
-        $aliRds = new Rds($company);
+        if (isset($conf['rds'])) $conf = $conf['rds'];
+        if (!isset($conf['regionID'])) $conf['regionID'] = 'cn-shanghai';
+        $aliRds = new Rds($conf);
         return $aliRds->load();
     }
 
 
-    private function asyncBalance(array $company)
+    private function asyncBalance(array $conf)
     {
-        if (isset($company['balance'])) $company = $company['balance'];
-        $boss = new Boss($company);
+        if (isset($conf['balance'])) $conf = $conf['balance'];
+        $boss = new Boss($conf);
         $resp = $boss->balance();
         if (empty($resp)) return '查询失败';
         return $resp;
@@ -149,10 +149,10 @@ class AliYunAsset extends Library
     /**
      * @throws Error
      */
-    private function asyncCert(array $company)
+    private function asyncCert(array $conf)
     {
-        if (isset($company['cert'])) $company = $company['cert'];
-        $aliCert = new Cert($company);
+        if (isset($conf['cert'])) $conf = $conf['cert'];
+        $aliCert = new Cert($conf);
         $data = $aliCert->load();
         return $data['CertificateList'] ?? [];
     }
@@ -163,11 +163,11 @@ class AliYunAsset extends Library
      * @throws ServerException
      * @throws Error
      */
-    private function asyncDomain(array $company)
+    private function asyncDomain(array $conf)
     {
-        if (isset($company['domain'])) $company = $company['domain'];
-        $aliAns = new Analysis($company);
-        $aliDomain = new Domain($company);
+        if (isset($conf['domain'])) $conf = $conf['domain'];
+        $aliAns = new Analysis($conf);
+        $aliDomain = new Domain($conf);
         $resp = $aliDomain->all();
         $asDomain = [];
         foreach ($resp['Data']['Domain'] as $i => $domain) {
