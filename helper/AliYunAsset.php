@@ -33,8 +33,8 @@ class AliYunAsset extends Library
             'mysql' => 8,
             'redis' => 16,
             'balance' => 32,
-            'file' => 1024,
         ];
+        if ($item === 'all') return array_sum($value);
         return $value[$item] ?? 0;
     }
 
@@ -47,18 +47,11 @@ class AliYunAsset extends Library
     public function loadAliYunData(int $types = 0): array
     {
         $res = [];
-        $file = _RUNTIME . '/aliResource.json';
-        if ($types > 0 && ($types & 1024)) {
-            $res = $this->_controller->_config->loadFile($file);
-        }
         if ($types > 0 && ($types & 1)) $res['domain'] = $this->asyncDomain($this->conf);
         if ($types > 0 && ($types & 2)) $res['cert'] = $this->asyncCert($this->conf);
         if ($types > 0 && ($types & 4)) $res['ecs'] = $this->asyncService($this->conf);
         if ($types > 0 && ($types & 8)) $res['mysql'] = $this->asyncRds($this->conf);
         if ($types > 0 && ($types & 16)) $res['redis'] = $this->asyncRedis($this->conf);
-        if ($types > 0 && ($types & 1024)) {
-            file_put_contents($file, json_encode($res, 320 + 128));
-        }
         if ($types > 0 && ($types & 32)) $res['balance'] = $this->asyncBalance($this->conf);
 
         end:
