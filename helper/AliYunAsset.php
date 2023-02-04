@@ -24,23 +24,42 @@ class AliYunAsset extends Library
         $this->conf = $conf;
     }
 
+    public function itemInt(string $item): int
+    {
+        $value = [
+            'domain' => 1,
+            'cert' => 2,
+            'ecs' => 4,
+            'mysql' => 8,
+            'redis' => 16,
+            'balance' => 32,
+            'file' => 1024,
+        ];
+        return $value[$item] ?? 0;
+    }
+
+
     /**
      * @throws ClientException
      * @throws ServerException
      * @throws Error
      */
-    public function loadAliYunData(): array
+    public function loadAliYunData(int $types = 0): array
     {
+        $res = [];
         $file = _RUNTIME . '/aliResource.json';
-        $res = $this->_controller->_config->loadFile($file);
-
-        $res['domain'] = $this->asyncDomain($this->conf);
-        $res['cert'] = $this->asyncCert($this->conf);
-        $res['service'] = $this->asyncService($this->conf);
-        $res['mysql'] = $this->asyncRds($this->conf);
-        $res['redis'] = $this->asyncRedis($this->conf);
-        file_put_contents($file, json_encode($res, 320 + 128));
-        $res['balance'] = $this->asyncBalance($this->conf);
+        if ($types > 0 && ($types & 1024)) {
+            $res = $this->_controller->_config->loadFile($file);
+        }
+        if ($types > 0 && ($types & 1)) $res['domain'] = $this->asyncDomain($this->conf);
+        if ($types > 0 && ($types & 2)) $res['cert'] = $this->asyncCert($this->conf);
+        if ($types > 0 && ($types & 4)) $res['ecs'] = $this->asyncService($this->conf);
+        if ($types > 0 && ($types & 8)) $res['mysql'] = $this->asyncRds($this->conf);
+        if ($types > 0 && ($types & 16)) $res['redis'] = $this->asyncRedis($this->conf);
+        if ($types > 0 && ($types & 1024)) {
+            file_put_contents($file, json_encode($res, 320 + 128));
+        }
+        if ($types > 0 && ($types & 32)) $res['balance'] = $this->asyncBalance($this->conf);
 
         end:
         $time = time();
@@ -57,7 +76,7 @@ class AliYunAsset extends Library
                     }
                     break;
                 case 'mysql':
-                case 'service':
+                case 'ecs':
                 case 'domain':
                     foreach ($items as $i => &$redis) {
                         $redis['desc'] = ($redis['register']['Remark'] ?? '');
@@ -86,7 +105,7 @@ class AliYunAsset extends Library
      */
     private function asyncService(array $company)
     {
-        if (isset($company['service'])) $company = $company['service'];
+        if (isset($company['ecs'])) $company = $company['ecs'];
         $aliCert = new Service($company);
         $RegionId = 'cn-shenzhen';
         return $aliCert->load($RegionId);
