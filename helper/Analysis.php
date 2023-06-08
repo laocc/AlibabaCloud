@@ -56,7 +56,7 @@ class Analysis extends Library
                     return "CNAME解析的域名只允许：{$domTxt}，可以*开头的泛解析";
                 }
                 chkValue2:
-                if (is_ip($value, 'ipv4' or is_ip($value, 'ipv6'))) return 'CNAME解析目标不可以为IP4或IP6格式';
+                if (is_ip($value, 'ipv4') or is_ip($value, 'ipv6')) return 'CNAME解析目标不可以为IP4或IP6格式';
                 else if (!is_domain($value)) return 'CNAME解析目标须是一个域名';
                 break;
 
