@@ -2,7 +2,6 @@
 
 namespace laocc\AlibabaCloud;
 
-
 use AlibabaCloud\Client\AlibabaCloud;
 
 abstract class Base
@@ -16,8 +15,8 @@ abstract class Base
 
     public function __construct(array $option = [])
     {
-        $this->accessKeyId = $option['id'] ?? null;
-        $this->accessKeySecret = $option['secret'] ?? null;
+        $this->accessKeyId = $option['id'] ?? '';
+        $this->accessKeySecret = $option['secret'] ?? '';
         if (isset($option['regionID'])) $this->regionID = $option['regionID'];
         if (isset($option['debug'])) $this->debug = $option['debug'];
         if (isset($option['timeout'])) $this->timeout = $option['timeout'];
