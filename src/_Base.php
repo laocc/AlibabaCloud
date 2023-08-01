@@ -21,13 +21,13 @@ abstract class _Base extends Library
 
     public function _init(array $option = [])
     {
-        $this->accessKeyId = $option['id'] ?? null;
+        $this->accessKeyId = $option['id'] ?? '';
 
         if (!$this->accessKeyId and isset($option['key'])) $this->accessKeyId = $option['key'];
         else if (!$this->accessKeyId and isset($option['keyid'])) $this->accessKeyId = $option['keyid'];
         if (!$this->accessKeyId) throw new Error('aliyun accessKeyId 不能为空');
 
-        $this->accessKeySecret = $option['secret'] ?? null;
+        $this->accessKeySecret = $option['secret'] ?? '';
         if (!$this->accessKeySecret) throw new Error('aliyun accessKeySecret 不能为空');
 
         $this->conf = $option;
