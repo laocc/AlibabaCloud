@@ -21,14 +21,14 @@ abstract class _Base extends Library
 
     public function _init(array $option = [])
     {
-        $this->accessKeyId = $option['id'] ?? '';
+        $accessKeyId = $option['id'] ?? '';
 
-        if (!$this->accessKeyId and isset($option['key'])) $this->accessKeyId = $option['key'];
-        else if (!$this->accessKeyId and isset($option['keyid'])) $this->accessKeyId = $option['keyid'];
-        if (!$this->accessKeyId) throw new Error('aliyun accessKeyId 不能为空');
+        if (!$accessKeyId and isset($option['key'])) $accessKeyId = $option['key'];
+        else if (!$accessKeyId and isset($option['keyid'])) $accessKeyId = $option['keyid'];
+        if (!$accessKeyId) throw new Error('aliyun accessKeyId 不能为空');
 
-        $this->accessKeySecret = $option['secret'] ?? '';
-        if (!$this->accessKeySecret) throw new Error('aliyun accessKeySecret 不能为空');
+        $accessKeySecret = $option['secret'] ?? '';
+        if (!$accessKeySecret) throw new Error('aliyun accessKeySecret 不能为空');
 
         $this->conf = $option;
         if (isset($option['regionID'])) $this->regionID = strval($option['regionID']);
@@ -37,37 +37,34 @@ abstract class _Base extends Library
         if (isset($option['index'])) $this->pageIndex = intval($option['index']);
         if (isset($option['size'])) $this->pageSize = intval($option['size']);
 
-        AlibabaCloud::accessKeyClient($this->accessKeyId, $this->accessKeySecret)
-            ->regionId($this->regionID)->asDefaultClient();
+        $this->setClient($accessKeyId, $accessKeySecret);
     }
 
-    public function setClient(string $keyID, string $secret)
+    public function setClient(string $keyID, string $secret): _Base
     {
         $this->accessKeyId = $keyID;
         $this->accessKeySecret = $secret;
 
-        AlibabaCloud::accessKeyClient($keyID, $secret)
-            ->regionId('cn-shanghai')->asDefaultClient();
+        AlibabaCloud::accessKeyClient($keyID, $secret)->regionId($this->regionID)->asDefaultClient();
 
         return $this;
     }
 
 
-    public function regionId(string $regionID)
+    public function setRegionId(string $regionID): _Base
     {
         $this->regionID = $regionID;
-        AlibabaCloud::accessKeyClient($this->accessKeyId, $this->accessKeySecret)
-            ->regionId($regionID)->asDefaultClient();
+        AlibabaCloud::accessKeyClient($this->accessKeyId, $this->accessKeySecret)->regionId($regionID)->asDefaultClient();
         return $this;
     }
 
-    public function setTimeout(int $timeout)
+    public function setTimeout(int $timeout): _Base
     {
         $this->timeout = $timeout;
         return $this;
     }
 
-    public function setPage(int $size, int $index = 1)
+    public function setPage(int $size, int $index = 1): _Base
     {
         $this->pageIndex = $index;
         $this->pageSize = $size;
