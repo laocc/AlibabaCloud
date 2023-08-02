@@ -9,6 +9,12 @@ use AlibabaCloud\Ecs\Ecs;
 
 class Service extends _Base
 {
+    /**
+     * @param string|null $RegionId
+     * @return array|string
+     * @throws \AlibabaCloud\Client\Exception\ClientException
+     * @throws \AlibabaCloud\Client\Exception\ServerException
+     */
     public function load(string $RegionId = null)
     {
         //->withRegionId($RegionId)
@@ -47,9 +53,7 @@ class Service extends _Base
             return $service;
 
 
-        } catch (ClientException $exception) {
-            return $exception->getMessage();
-        } catch (ServerException $exception) {
+        } catch (ClientException|ServerException $exception) {
             return $exception->getMessage();
         }
 

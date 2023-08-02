@@ -9,6 +9,11 @@ use GuzzleHttp\Exception\ServerException;
 
 class Redis extends _Base
 {
+    /**
+     * @return array|mixed|string
+     * @throws \AlibabaCloud\Client\Exception\ClientException
+     * @throws \AlibabaCloud\Client\Exception\ServerException
+     */
     public function load()
     {
         try {
@@ -18,9 +23,7 @@ class Redis extends _Base
                 ->toArray();
 
             return $result['Instances']['KVStoreInstance'] ?? [];
-        } catch (ClientException $exception) {
-            return $exception->getMessage();
-        } catch (ServerException $exception) {
+        } catch (ClientException|ServerException $exception) {
             return $exception->getMessage();
         }
 
